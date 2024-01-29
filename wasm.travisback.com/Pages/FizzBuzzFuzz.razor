@@ -20,7 +20,7 @@
 <p>
     This Razor component demonstrates the FizzBuzzFuzz algorithm for<br />
     numbers 1 to 100. For each number, it calculates a byte of 8 bits based on<br />
-    divisibility rules by numbers 2 through 9, and displays the result in an HTML table.
+    divisibility rules by numbers 2, 3, and 4, and displays the result in an HTML table.
 </p>
 
 
@@ -53,7 +53,6 @@
         <tr>
             <th>Number</th>
             <th>Binary</th>
-            <th>Decimal</th>
             <th>Result</th>
         </tr>
     </thead>
@@ -63,7 +62,6 @@
             <tr>
                 <td>@result.Number</td>
                 <td>@result.Binary</td>
-                <td>@result.Decimal</td>
                 <td>@result.Result</td>
             </tr>
         }
@@ -103,11 +101,13 @@
             if (i % 2 == 0) bankOf8Bits |= 1 << 0;
             if (i % 3 == 0) bankOf8Bits |= 1 << 1;
             if (i % 4 == 0) bankOf8Bits |= 1 << 2;
+            /*
             if (i % 5 == 0) bankOf8Bits |= 1 << 3;
             if (i % 6 == 0) bankOf8Bits |= 1 << 4;
             if (i % 7 == 0) bankOf8Bits |= 1 << 5;
             if (i % 8 == 0) bankOf8Bits |= 1 << 6;
             if (i % 9 == 0) bankOf8Bits |= 1 << 7;
+            */
 
             // Build the result string based on set bits in the byte
             if ((bankOf8Bits & 1) == 1) result += "Fizz";
