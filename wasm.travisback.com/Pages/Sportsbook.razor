@@ -1,4 +1,20 @@
-﻿@inject ApiService ApiService
+﻿<!--------------------------------------------------------------------------------
+    File: Sportsbook.razor
+
+    Description: This Razor component represents a simple sportsbook page that
+                 allows users to select a sports league from a dropdown and
+                 displays information about the selected league using the ApiService.
+
+    Author: Travis Back
+
+    Created: 2024-01-28
+
+    Last Modified: 2024-01-28
+
+    Notes:
+    - This component uses the ApiService to fetch data about the selected league.
+------------------------------------------------------------------------------->
+@inject ApiService ApiService
 @page "/sportsbook"
 
 <h3>Sportsbook</h3>
@@ -14,7 +30,7 @@
 </div>
 
 <div>
-    <p>Selected league: <strong>@selectedLeague</strong></p>
+    <p>Selected league: <strong>@LeagueInfoAttribute.GetLeagueDescription(selectedLeague)</strong></p>
     <br />
     <p>
         @apiData
@@ -22,7 +38,7 @@
 </div>
 
 @code {
-    private League selectedLeague = League.MLB;
+    private League selectedLeague = (League)Enum.GetValues(typeof(League)).GetValue(0);
     private string apiData = string.Empty;
 
     protected override async Task OnInitializedAsync()
