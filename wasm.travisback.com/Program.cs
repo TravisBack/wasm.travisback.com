@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using wasm.travisback.com.Services;
 
 namespace wasm.travisback.com
 {
@@ -13,6 +14,7 @@ namespace wasm.travisback.com
 
             //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["API_Prefix"] ?? builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddScoped<ApiService> ();
 
             await builder.Build().RunAsync();
         }

@@ -1,0 +1,38 @@
+﻿@inject ApiService ApiService
+@page "/sportsbook"
+
+<h3>Sportsbook</h3>
+
+<div>
+    <label for="leagueDropdown">Select League:</label>
+    <select id="leagueDropdown" @onchange="UpdateText">
+        @foreach (League league in Enum.GetValues(typeof(League)))
+        {
+            <option value="@league">@league</option>
+        }
+    </select>
+</div>
+
+<div>
+    <p>Selected league: <strong>@selectedLeague</strong></p>
+    <br />
+    <p>
+        @apiData
+    </p>
+</div>
+
+@code {
+    private League selectedLeague = League.MLB;
+    private string apiData = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        apiData = await ApiService.GetScoreBoard(selectedLeague);
+    }
+
+    private async Task UpdateText(ChangeEventArgs e)
+    {
+        selectedLeague = Enum.Parse<League>(e.Value.ToString());
+        apiData = await ApiService.GetScoreBoard(selectedLeague);
+    }
+}
