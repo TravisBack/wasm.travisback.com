@@ -15,12 +15,12 @@ namespace wasm.travisback.com.Services
         {
             _configuration = configuration;
 
-            _baseApiURL = "https://site.api.espn.com/apis/site/v2/sports";
+            
         }
 
         public async Task<string> GetScoreBoard(League league)
         {
-            var scoreURL = _baseApiURL + LeagueInfoAttribute.GetLeagueSubURL(league) + "/scoreboard";
+            var scoreURL = _baseApiURL + LeagueInfoAttribute.GetLeagueURL(league) + "/scoreboard";
 
             try
             {
