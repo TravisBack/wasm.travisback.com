@@ -1,0 +1,40 @@
+﻿<h3>Object in Ancestor</h3>
+
+<p>
+    Root object:<br />
+    @SimpleObject?.Id<br />
+    @SimpleObject?.Name<br />
+    <button class="btn btn-primary" @onclick="DecrementCount">Decrement</button>
+    <button class="btn btn-primary" @onclick="IncrementCount">Increment</button>
+</p>
+
+<CascadingValue Value="@SimpleObject">
+    <table>
+        <tr>
+            <td><Ancestor3 OnUpdate="Update" /></td>
+            <td><Ancestor4 OnUpdate="Update" /></td>
+        </tr>
+    </table>
+</CascadingValue>
+
+@code {
+    [CascadingParameter]
+    public SimpleObject? SimpleObject { get; set; } = new();
+
+    private void DecrementCount()
+    {
+        SimpleObject.Id--;
+        Update();
+    }
+
+    private void IncrementCount()
+    {
+        SimpleObject.Id++;
+        Update();
+    }
+
+    public void Update()
+    {
+        StateHasChanged();
+    }
+}

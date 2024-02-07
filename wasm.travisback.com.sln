@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wasm.travisback.com", "wasm.travisback.com\wasm.travisback.com.csproj", "{C25BB706-DDA3-43E6-BE0E-A68B2FD44F04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wasm.travisback.com", "wasm.travisback.com\wasm.travisback.com.csproj", "{C25BB706-DDA3-43E6-BE0E-A68B2FD44F04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{F3B50FFB-92AF-4490-84D2-B8DE1013B775}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{F3B50FFB-92AF-4490-84D2-B8DE1013B775}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

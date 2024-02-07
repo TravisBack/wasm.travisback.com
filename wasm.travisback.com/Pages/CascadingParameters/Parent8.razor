@@ -1,0 +1,37 @@
+﻿<h3>Parent 8</h3>
+<p>
+    Parent 8 object:<br />
+    @SimpleObject?.Id<br />
+    @SimpleObject?.Name<br />    
+    <button class="btn btn-primary" @onclick="DecrementCount">Decrement</button>
+    <button class="btn btn-primary" @onclick="IncrementCount">Increment</button>
+</p>
+
+<CascadingValue Value="@SimpleObject">
+    <Child8 OnUpdate="Update" />
+</CascadingValue>
+
+@code {
+    [CascadingParameter]
+    public SimpleObject? SimpleObject { get; set; }
+    [ParameterAttribute]
+    public EventCallback OnUpdate { get; set; }
+
+    private void DecrementCount()
+    {
+        SimpleObject.Id--;
+        Update();
+    }
+
+    private void IncrementCount()
+    {
+        SimpleObject.Id++;
+        Update();
+    }
+
+    public void Update()
+    {
+        OnUpdate.InvokeAsync();
+        StateHasChanged();
+    }
+}
