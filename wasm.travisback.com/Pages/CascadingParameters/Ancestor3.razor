@@ -1,0 +1,57 @@
+﻿<h3>Ancestor 3</h3>
+<p>
+    Ancestor 3 object (O):<br />
+    @SimpleObject?.Id<br />
+    @SimpleObject?.Name<br />
+    <button class="btn btn-primary" @onclick="DecrementCount">Decrement</button>
+    <button class="btn btn-primary" @onclick="IncrementCount">Increment</button><br/>
+    <button class="btn btn-primary" @onclick="SetObject">Set Object</button>
+    <button class="btn btn-primary" @onclick="ResetObject">Reset Object</button>
+</p>
+
+<CascadingValue Value="@SimpleObject">
+    <Parent3 OnUpdate="Update"/>
+</CascadingValue>
+
+@code {
+    [CascadingParameter]
+    public SimpleObject? SimpleObject { get; set; }
+    [ParameterAttribute]
+    public EventCallback OnUpdate { get; set; }
+
+    private void ResetObject()
+    {
+        SimpleObject.Id = 0;
+        SimpleObject.Name = string.Empty;
+        SimpleObject.Allow = false;
+
+        Update();
+    }
+
+    private void SetObject()
+    {
+        SimpleObject.Id = 42;
+        SimpleObject.Name = "This is the string";
+        SimpleObject.Allow = true;
+
+        Update();
+    }
+
+    private void DecrementCount()
+    {
+        SimpleObject.Id--;
+        Update();
+    }
+
+    private void IncrementCount()
+    {
+        SimpleObject.Id++;
+        Update();
+    }
+    
+    public void Update()
+    {
+        OnUpdate.InvokeAsync();
+        StateHasChanged();
+    }
+}

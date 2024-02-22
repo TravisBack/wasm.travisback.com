@@ -1,0 +1,30 @@
+﻿@page "/cascadingparameters"
+
+<PageTitle>Cascading Parameters</PageTitle>
+<h3>Bidirectional Cascading Parameters</h3>
+<p>
+    The Bidirectional Cascading Parameters Demo in C# Blazor showcases the dynamic capabilities of cascading parameters within the Blazor framework. Unlike traditional cascading parameters that pass data strictly down through a component hierarchy, this demo illustrates the advanced functionality of passing data both up and down the hierarchy, as well as across different branches.
+</p>
+<p>
+    Bidirectional cascading parameters in the C# Blazor framework facilitate the seamless exchange of data not only downward through a component hierarchy but also upward and across different branches of the hierarchy. This is achieved by defining parameters in both parent and child components and establishing a bidirectional flow of data between them. When a value is updated in a child component, it can propagate upward to its parent component through specified parameters. Similarly, the parent component can pass updated values down to its child components, allowing for continuous synchronization of data across the entire component tree. This bidirectional communication ensures that changes made in one part of the application are reflected in relevant components throughout the hierarchy, enhancing the responsiveness and flexibility of Blazor applications.
+</p>
+
+<table style="width: 100%; border-collapse: collapse;">
+    <tr>
+        <td style="width: 25%; border: 1px solid black;">
+            <ObjectInRoot />
+        </td>
+        <td style="width: 25%; border: 1px solid black;">
+            <ObjectInAncestor />
+        </td>
+        <td style="width: 25%; border: 1px solid black;">
+            <ObjectInParent />
+        </td>
+        <td style="width: 25%; border: 1px solid black;">
+            <ObjectInChild />
+        </td>
+    </tr>
+</table>
+
+@code {
+}
